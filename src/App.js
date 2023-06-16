@@ -1,43 +1,53 @@
 import React, { useState } from "react";
 import "./App.css";
-import Task from "./Components/Task";
 
 function App() {
-  const [taskName, setTaskName] = useState("");
-  const [time, setTime] = useState("");
-  const [taskList, setTaskList] = useState([]);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const addTask = () => {
-    setTaskList([...taskList, {task: taskName, time: time}]);
-    setTaskName("");
-    setTime("");
-  };
+  const submitForm = () => {
+
+  }
 
   return (
     <div className="App">
-      <h1>Todo List</h1>
-      <label>Task Name:</label>
-      <input
-        type="text"
-        id="task"
-        onChange={(e) => {
-          setTaskName(e.target.value);
-        }}
-      />
-      <label>Time:</label>
-      <input
-        type="text"
-        id="time"
-        onChange={(e) => {
-          setTime(e.target.value);
-        }}
-      />
-
-      <button onClick={addTask}>Add</button>
-    
-    {taskList.map((task)=> {
-      return <Task taskName={task.task} time={task.time} />
-    })}
+      <form onSubmit={submitForm}>
+        <label htmlFor="firstName">First Name:</label>
+        <input
+          type="text"
+          id="firstName"
+          onChange={(e) => {
+            setFirstName(e.target.value);
+          }}
+        />
+        <label htmlFor="lastName">Last Name:</label>
+        <input
+          type="text"
+          id="LastName"
+          onChange={(e) => {
+            setLastName(e.target.value);
+          }}
+        />
+        <label htmlFor="email">Email:</label>
+        <input
+          type="text"
+          id="email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          onChange={(e) => {
+           setPassword(e.target.value);
+          }}
+        />
+        <input type="button" onClick={submitForm} value="Submit" />
+      </form>
     </div>
   );
 }
